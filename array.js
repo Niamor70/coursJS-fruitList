@@ -11,8 +11,8 @@ function keyPressOnNewFruit() {
 }
 
 function addFruit() {
-	fruits.push(document.getElementById('newFruit').value);
-	document.getElementById('newFruit').value = '';
+	fruits.push($('#newFruit').val());
+	$('#newFruit').val('');
 	showFruitList();
 	debug();
 }
@@ -23,12 +23,12 @@ function removeFruit(position) {
 }
 
 function showFruitList() {
-	var fruitList = document.getElementById('fruitList');
-	fruitList.innerHTML = '';
+	
+	$('#fruitList').html('');
 	for (var i = 0; i < fruits.length; i++) {
-		fruitList.innerHTML += '<li onclick="removeFruit('+i+');">'+fruits[i]+'</li>';
+		$('#fruitList').append('<li onclick="removeFruit('+i+');">'+fruits[i]+'</li>');
 	}
 }
 
-document.getElementById('addFruitBtn').addEventListener('click', addFruit);
-document.getElementById('newFruit').addEventListener('keypress', keyPressOnNewFruit);
+$('#addFruitBtn').click(addFruit);
+$('#newFruit').keypress(keyPressOnNewFruit);
